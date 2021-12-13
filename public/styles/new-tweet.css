@@ -1,0 +1,19 @@
+
+button{
+  font-family: Bungee;
+  background-color: #4056A1;
+  color: #FFFFFF;
+}
+textarea
+{
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: black;
+  font-family: "Source Sans Pro", sans-serif;
+}
+output{
+  /* flex: 1; */
+  display: absolute;
+  float: right;
+  font-family: Bungee;
+}
