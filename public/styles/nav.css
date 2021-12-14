@@ -10,24 +10,21 @@ nav {
 .logo {
   font-family: Bungee;
   font-size: 2em;
-}
-.logo-right{
-  flex: 1;
-display: flex;
-  justify-content: flex-end;
-  padding-right: 1.5em;
-  /* padding-top: 1.5em; */
+  width: 70%;
 }
 i{
   color: red;
-  display: flex;
-  align-content: center;
-  
-}
-.p-class{
-  /* flex: 1; */
   display: absolute;
-  /* float: center;
-  clear: both; */
+  }
+
+.logo-right{
+  flex: 1;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+
+  }
   
-}
+  .p-class{
+    display: block;
+  }
