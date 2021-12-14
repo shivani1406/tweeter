@@ -26,6 +26,12 @@ main{
   justify-content: center;
   background-color: #f4f1ec;
 }
+
+
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+ .new-tweet{
+   width: 500px;
+   
+ }
