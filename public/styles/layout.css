@@ -74,3 +74,8 @@ main.container {
 .sticky + .content {
   padding-top: 102px;
 }
+
+#errormessage {
+  color: red;
+  
+}

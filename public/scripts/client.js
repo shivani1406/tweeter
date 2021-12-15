@@ -99,6 +99,8 @@ function loadTweets(){
       $("#tweet-box").empty()
       renderTweets(data);
       $("#tweet-text").val("");
+      $("#errormessage").text("");
+      $('#errormessage').css({"border": "0px"});
     },
     failure: error => {
       console.log(error);
@@ -117,7 +119,9 @@ $("form").on("submit", function(e){
   let input = $('#tweet-text').val().length;
   console.log(input);
   if (input === 0 || input > 140) {
-    alert("invalid input ! Please check your tweet");
+    // alert("invalid input ! Please check your tweet");
+    $('#errormessage').text("invalid input ! Please check your tweet");
+    $('#errormessage').css({"border": "2px solid red"});
     return;
   }
   $.ajax({
