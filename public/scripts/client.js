@@ -3,84 +3,92 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+// import * as timeago from 'timeago.js';
+$(document).ready(function() {
 
-// $(document).ready(function() {
-
-//   function renderTweets(data) {
-//     $('#tweets-container').empty();
-//     data.forEach( (tweet) => {
-//       console.log("Here is my tweet",tweet);
-//       $('#tweets-container').prepend(createTweetElement(tweet));
-//     })
-//   }
-
-//   function timeSince(date) {
-//     var seconds = Math.floor((new Date() - date) / 1000);
-//     var interval = Math.floor(seconds / 31536000);
-//     if (interval >= 1) {
-//         return interval + " years ago";
-//     }
-//     interval = Math.floor(seconds / 2592000);
-//     if (interval >= 1) {
-//         return interval + " months ago";
-//     }
-//     interval = Math.floor(seconds / 86400);
-//     if (interval >= 1) {
-//         return interval + " days ago";
-//     }
-//     interval = Math.floor(seconds / 3600);
-//     if (interval >= 1) {
-//         return interval + " hours ago";
-//     }
-//     interval = Math.floor(seconds / 60);
-//     if (interval >= 1) {
-//         return interval + " minutes ago";
-//     }
-//     return Math.floor(seconds + 1) + " seconds ago";
-//   }
-
-//   function createTweetElement(tweetData) {
-//     const tweet = tweetData.content.text;
-//     const name = tweetData.user.name;
-//     const avatarsImg = tweetData.user.avatars;
-//     const tweeHandle = tweetData.user.handle;
-
-//     const $createAvatar = $('<img>').addClass("avatar").attr("src",avatarsImg);
-//     const $createName = $('<div>').addClass("tweeterName").text(name);
-//     const $createTweet = $('<div>').addClass("tweeBody").text(tweet);
-//     const $createHandle = $('<p>').addClass("userTwee").text(tweeHandle);
-
-//     const $iconContainer = $("<div>").addClass("icons");
-//     const $flag = $("<i>").addClass("fas fa-flag");
-//     const $retweet = $("<i>").addClass("fas fa-retweet");
-//     const $heart = $("<i>").addClass("fas fa-heart");
-
-//     const $tweetData = $("<article>").addClass("tweet");
-//     const $header = $("<p>").addClass("flex");
-//     const $footer = $("<footer>");
-//     const $content = $("<div>").addClass("content");
-//     const $dateOfTweet = $("<h6>").text(timeSince(tweetData['created_at']));
-
-//     $iconContainer.append($flag, $retweet, $heart);
-//     $header.append($createAvatar, $createName, $createHandle);
-//     $content.append($createTweet);
-//     $footer.append($iconContainer, $dateOfTweet);
-//     $tweetData.append($header, $content, $footer);
+  // Test / driver code (temporary). Eventually will get this from the server.
+// Fake data taken from initial-tweets.json
 
 
-//     return $tweetData;
-//   }
+const data = [
+  {
+    "user": {
+      "name": "Newton",
+      "avatars": "https://i.imgur.com/73hZDYK.png"
+      ,
+      "handle": "@SirIsaac"
+    },
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
+  },
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": "https://i.imgur.com/nlhLi3I.png",
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
+  },
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": "https://i.imgur.com/nlhLi3I.png",
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
+  }
+]
 
-//   function loadTweets () {
-//     $.ajax({
-//       type: 'GET',
-//       url: "/tweets",
-//       dataType: 'JSON'
-//     })
-//     .done( data => {
-//       console.log(data);
-//         renderTweets(data)
-//     })
-//   }
-// loadTweets()
-// })
+const renderTweets = function(tweets) {
+  for(let tweet in tweets){
+    let $tweet = createTweetElement(tweets[tweet]);
+    $('#tweet-box').prepend($tweet);
+    console.log($tweet);
+  }
+}
+
+const createTweetElement = function(tweet) {
+  // let section = $("<section>").addClass("tweet-container");
+  let article = $("<article>").addClass("tweet-article");
+  let header = $("<header>").addClass("tweet-header");
+  let img = $("<img>").addClass("tweet-image");
+  let h2 = $("<h2>").addClass("tweetname");
+  let spanOne = $("<span>").addClass("username");
+  let p = $("<p>").addClass("tweet-content");
+  let footer = $("<footer>").addClass("tweet-footer");
+  let spanTwo = $("<span>").addClass("tweet-footer-content");
+  let iOne = $("<i>").addClass("fas fa-flag");
+  let iTwo = $("<i>").addClass("fas fa-sync");
+  let iThree = $("<i>").addClass("fas fa-heart");
+
+  footer.append(iOne);
+  footer.append(iTwo);
+  footer.append(iThree);
+  footer.append(spanTwo);
+  header.append(img);
+  header.append(h2);
+  header.append(spanOne);
+  article.append(header);
+  article.append(p);
+  article.append(footer);
+  
+  // section.append(article);
+
+   img.attr("src", tweet.user.avatars);
+  h2.text(tweet.user.name);
+  spanOne.text(tweet.user.handle);
+  p.text(tweet.content.text);
+  spanTwo.text(timeago.format(tweet.created_at));
+
+  return article;
+}
+
+renderTweets(data);
+
+})

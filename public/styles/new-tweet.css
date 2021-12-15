@@ -10,12 +10,12 @@ textarea
   border-width: 0 0 2px;
   border-color: gray;
   font-family: sans-serif;
-  width: 600px;
+  width: 100%;
   font-size: 14px;
 }
 output{
   /* flex: 1; */
-  display: absolute;
+  /* display: absolute; */
   float: right;
   font-family: Bungee;
 }
