@@ -90,5 +90,13 @@ const createTweetElement = function(tweet) {
 }
 
 renderTweets(data);
-
+let $form = $('#tweet-form');
+$("form").on("submit", function(e){
+  // prevents form reload
+   e.preventDefault();
+   let $formData = $form.serialize();
+  console.log($formData);
+  
+  })
 })
+
