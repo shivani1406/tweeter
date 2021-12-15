@@ -90,13 +90,39 @@ const createTweetElement = function(tweet) {
 }
 
 renderTweets(data);
+
+function loadTweets(){
+  $.ajax({
+    url: '/tweets',
+    method: "GET",
+    success: data => {
+      $("#tweet-box").empty()
+      renderTweets(data);
+    },
+    failure: error => {
+      console.log(error);
+    }
+  });
+}
+
 let $form = $('#tweet-form');
 $("form").on("submit", function(e){
   // prevents form reload
    e.preventDefault();
    let $formData = $form.serialize();
   console.log($formData);
-  
+  $.ajax({
+    url: '/tweets',
+    method: 'POST',
+    data: $formData,
+    success: data => {
+      loadTweets();
+      console.log("in this");
+    },
+    failure: error => {
+      console.log(error);
+    }
+  });
   })
 })
 
