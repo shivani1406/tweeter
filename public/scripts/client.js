@@ -98,6 +98,7 @@ function loadTweets(){
     success: data => {
       $("#tweet-box").empty()
       renderTweets(data);
+      $("#tweet-text").val("");
     },
     failure: error => {
       console.log(error);
@@ -111,6 +112,14 @@ $("form").on("submit", function(e){
    e.preventDefault();
    let $formData = $form.serialize();
   console.log($formData);
+
+  //form validations
+  let input = $('#tweet-text').val().length;
+  console.log(input);
+  if (input === 0 || input > 140) {
+    alert("invalid input ! Please check your tweet");
+    return;
+  }
   $.ajax({
     url: '/tweets',
     method: 'POST',
