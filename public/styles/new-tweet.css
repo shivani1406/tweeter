@@ -22,3 +22,12 @@ output{
 .red{
   color:red;
 }
+
+.tweet:hover .icons{
+  visibility: visible;
+}
+
+.tweet .icons {
+  visibility: hidden;
+  float:right;
+}
