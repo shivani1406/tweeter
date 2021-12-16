@@ -82,7 +82,22 @@ main.container {
   
 }
 
-@media all and (max-width: 320px) and (max-width: 438px){
+@media only screen and (max-width: 320px) and (max-width: 438px){
+  
+  
+  main.container
+  {
+      width: 100%;
+  }
+  .new-tweet{
+    width: 100%;
+  }
+  .tweet-container{
+    width: 100%;
+  }
+  
+} 
+@media only screen and  (max-width: 420px){
   
   
   main.container

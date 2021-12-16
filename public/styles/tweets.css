@@ -74,7 +74,7 @@ span.tweet-footer-content{
   font-family: sans-serif;
 }
 
-@media all and (max-width: 320px) and (max-width: 438px){
+@media only screen and (max-width: 320px) and (max-width: 438px){
   
   
   .tweet-image {

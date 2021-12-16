@@ -24,7 +24,7 @@ output{
 }
 
 
-@media all and (max-width: 320px) and (max-width: 438px){
+@media only screen and (max-width: 320px) and (max-width: 438px){
   .compose{
     font-size: 18px;
   }
