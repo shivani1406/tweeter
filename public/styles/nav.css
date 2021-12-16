@@ -15,6 +15,7 @@ nav {
 #arrow{
   color: red;
   display: absolute;
+  animation: MoveUpDown 1s linear infinite;
   }
 
 .logo-right{
@@ -24,7 +25,19 @@ nav {
     text-align: center;
 
   }
-  
+  /* .Writenew{
+    display: none;
+  } */
   .p-class{
     display: block;
+  }
+
+  @media all and (max-width: 480px){
+    .logo-right{
+      display: none;
+    }
+    .Writenew{
+      visibility: hidden;
+display: none;
+    }
   }

@@ -23,11 +23,21 @@ output{
   color:red;
 }
 
-.tweet:hover .icons{
-  visibility: visible;
-}
 
-.tweet .icons {
-  visibility: hidden;
-  float:right;
+@media all and (max-width: 320px) and (max-width: 438px){
+  .compose{
+    font-size: 18px;
+  }
+  textarea{
+    font-size: 14px;
+  }
+  .tweetButton{
+    font-size: 14px;
+  }
+  .tweet-text{
+font-size: 18px;
+  }
+  .counter{
+    font-size: 18px;
+  }
 }

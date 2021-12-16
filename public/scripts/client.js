@@ -32,16 +32,6 @@ const data = [
       "text": "Je pense , donc je suis"
     },
     "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
   }
 ]
 
@@ -54,7 +44,7 @@ const renderTweets = function(tweets) {
 }
 
 const createTweetElement = function(tweet) {
-  // let section = $("<section>").addClass("tweet-container");
+ 
   let article = $("<article>").addClass("tweet-article");
   let header = $("<header>").addClass("tweet-header");
   let img = $("<img>").addClass("tweet-image");
@@ -77,8 +67,6 @@ const createTweetElement = function(tweet) {
   article.append(header);
   article.append(p);
   article.append(footer);
-  
-  // section.append(article);
 
    img.attr("src", tweet.user.avatars);
   h2.text(tweet.user.name);
@@ -120,7 +108,7 @@ $("form").on("submit", function(e){
   console.log(input);
   if (input === 0 || input > 140) {
     // alert("invalid input ! Please check your tweet");
-    $('#errormessage').text("invalid input ! Please check your tweet");
+    $('#errormessage').text("Invalid input ! Please check your tweet");
     $('#errormessage').css({"border": "2px solid red"});
     return;
   }
