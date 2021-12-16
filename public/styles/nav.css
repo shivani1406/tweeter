@@ -40,4 +40,10 @@ nav {
       visibility: hidden;
 display: none;
     }
+
+    .logo {
+      font-size: 1.5em;
+    }
+
+    
   }

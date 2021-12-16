@@ -31,7 +31,7 @@ body {
 main.container {
   background-color: white;
   /* width: 550px; */
-  width: 100%;
+  /* width: 100%; */
   margin: auto;
   /* padding-top: 90px; */
   /* padding-bottom: 10px; */
@@ -82,6 +82,43 @@ main.container {
   
 }
 
+/* Makes responsive page layout */
+.container1 {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+.container2, .container{
+  width: 100%;
+}
+
+@media (min-width: 930px) {
+  .container2 {
+    width: 40%;
+    -webkit-order: 1;
+    order: 1;
+  }
+
+  .container {
+    width: 60%;
+    -webkit-order: 2;
+    order: 2;
+  }
+  .container2{
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 350px;
+    width: 350px;
+   
+  }
+  .container1{
+    padding-top: 20px;
+    background-color: white;
+    justify-content: center;
+  }
+}
+
 @media only screen and (max-width: 320px) and (max-width: 438px){
   
   
@@ -111,4 +148,17 @@ main.container {
     width: 100%;
   }
   
+  .container2{
+    margin:0px;
+    height: auto;
+    width: auto;
+    width: 100%;
+   
+  }
+  .container1{
+    padding-top: 0px;
+    background-color: white;
+    justify-content: center;
+    width: 100%;
+  }
 } 

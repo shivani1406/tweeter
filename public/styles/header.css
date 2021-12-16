@@ -1,12 +1,13 @@
 header {
   /* background-color:#FABB51; */
   opacity: 0.0 - 1.0;
-  height: 400px;
+  
   background-color: #e08600;
 background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 
 }
 .image {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
 }
@@ -15,5 +16,6 @@ background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.
   flex: 1;
   justify-content: center;
   color: #FFFFFF;
-  font-size: 40px;
+  font-size: 36px;
 }
+
