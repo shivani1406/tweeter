@@ -1,8 +1,10 @@
+/* CSS for top navbar with icon form
+fontawesome  */
+
 nav {
   background-color: #4056A1;
   height: 120px;
   color: #FFFFFF;
-  /* font-family: sans-serif; */
   display: flex;
   padding-left: 1.5em;
   padding-top: 1.5em;
@@ -25,13 +27,11 @@ nav {
     text-align: center;
 
   }
-  /* .Writenew{
-    display: none;
-  } */
+ 
   .p-class{
     display: block;
   }
-
+/* Makes responsive page layout */
   @media only screen and (max-width: 480px){
     .logo-right{
       display: none;

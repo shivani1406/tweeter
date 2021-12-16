@@ -1,9 +1,8 @@
+/* Header CSS for controlling the profile part */
 header {
-  /* background-color:#FABB51; */
   opacity: 0.0 - 1.0;
-  
   background-color: #e08600;
-background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 
 }
 .image {

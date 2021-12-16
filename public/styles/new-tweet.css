@@ -1,4 +1,4 @@
-
+/* New tweet addition area CSS */
 button{
   font-family: Bungee;
   background-color: #4056A1;
@@ -14,8 +14,6 @@ textarea
   font-size: 14px;
 }
 output{
-  /* flex: 1; */
-  /* display: absolute; */
   float: right;
   font-family: Bungee;
 }

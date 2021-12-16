@@ -3,14 +3,13 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// import * as timeago from 'timeago.js';
+
 $(document).ready(function() {
 
+  // Focuses the curson to the teaxtarea
   $("#tweet-text").focus();
   // Test / driver code (temporary). Eventually will get this from the server.
 // Fake data taken from initial-tweets.json
-
-
 const data = [
   {
     "user": {
@@ -35,15 +34,15 @@ const data = [
     "created_at": 1461113959088
   }
 ]
-
+// Iterate on the tweets and adds to the section 
 const renderTweets = function(tweets) {
   for(let tweet in tweets){
     let $tweet = createTweetElement(tweets[tweet]);
     $('#tweet-box').prepend($tweet);
-    console.log($tweet);
   }
 }
 
+// Creates tweet components to be added to the dynamic section 
 const createTweetElement = function(tweet) {
  
   let article = $("<article>").addClass("tweet-article");
@@ -69,7 +68,7 @@ const createTweetElement = function(tweet) {
   article.append(p);
   article.append(footer);
 
-   img.attr("src", tweet.user.avatars);
+  img.attr("src", tweet.user.avatars);
   h2.text(tweet.user.name);
   spanOne.text(tweet.user.handle);
   p.text(tweet.content.text);
@@ -80,7 +79,8 @@ const createTweetElement = function(tweet) {
 
 renderTweets(data);
 
-function loadTweets(){
+function getTweets(){
+  // AJAX code to get data
   $.ajax({
     url: '/tweets',
     method: "GET",
@@ -89,6 +89,7 @@ function loadTweets(){
       renderTweets(data);
       $("#tweet-text").val("");
       $("#errormessage").text("");
+      $("#counter").val("140");
       $('#errormessage').css({"border": "0px"});
     },
     failure: error => {
@@ -96,34 +97,38 @@ function loadTweets(){
     }
   });
 }
-
+// Submits the form on pressing enter key 
 let $form = $('#tweet-form');
 $('form').keypress((e) => {
   if (e.which === 13) {
       $('form').submit();
   }
 })
+// Form submit logic
 $("form").on("submit", function(e){
   // prevents form reload
    e.preventDefault();
    let $formData = $form.serialize();
-  console.log($formData);
 
   //form validations
   let input = $('#tweet-text').val().length;
   console.log(input);
-  if (input === 0 || input > 140) {
-    // alert("invalid input ! Please check your tweet");
-    $('#errormessage').text("Invalid input ! Please check your tweet");
+  if (input === 0 ) {
+    $('#errormessage').text("You did not write anything in your tweet ! Please check your tweet");
+    $('#errormessage').css({"border": "2px solid red"});
+    return;
+  } else if(input > 140) {
+    $('#errormessage').text("You cannot type beyond the character limits ! Please check your tweet");
     $('#errormessage').css({"border": "2px solid red"});
     return;
   }
+  //AJAX code to post Data
   $.ajax({
     url: '/tweets',
     method: 'POST',
     data: $formData,
     success: data => {
-      loadTweets();
+      getTweets();
       console.log("in this");
     },
     failure: error => {
