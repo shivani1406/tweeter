@@ -6,6 +6,7 @@
 // import * as timeago from 'timeago.js';
 $(document).ready(function() {
 
+  $("#tweet-text").focus();
   // Test / driver code (temporary). Eventually will get this from the server.
 // Fake data taken from initial-tweets.json
 
@@ -97,6 +98,11 @@ function loadTweets(){
 }
 
 let $form = $('#tweet-form');
+$('form').keypress((e) => {
+  if (e.which === 13) {
+      $('form').submit();
+  }
+})
 $("form").on("submit", function(e){
   // prevents form reload
    e.preventDefault();
